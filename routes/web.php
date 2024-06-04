@@ -14,6 +14,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/addresses', [\App\Http\Controllers\EmailAddressController::class, 'list'])->name("address.list");
     Route::get('/addresses/add', [\App\Http\Controllers\EmailAddressController::class, 'add'])->name("address.add");
+    Route::post('/addresses/add', [\App\Http\Controllers\EmailAddressController::class, 'store'])->name("address.store");
 });
 
 Route::middleware('auth')->group(function () {
