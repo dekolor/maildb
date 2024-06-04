@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmailAddressController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,9 +14,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })->name("dashboard");
 
-    Route::get('/addresses', [\App\Http\Controllers\EmailAddressController::class, 'list'])->name("address.list");
-    Route::get('/addresses/add', [\App\Http\Controllers\EmailAddressController::class, 'add'])->name("address.add");
-    Route::post('/addresses/add', [\App\Http\Controllers\EmailAddressController::class, 'store'])->name("address.store");
+    Route::get('/addresses', [EmailAddressController::class, 'list'])->name("address.list");
+    Route::get('/addresses/add', [EmailAddressController::class, 'add'])->name("address.add");
+    Route::post('/addresses/add', [EmailAddressController::class, 'store'])->name("address.store");
+
+    Route::get('/categories', [CategoryController::class, 'list'])->name("category.list");
 });
 
 Route::middleware('auth')->group(function () {
