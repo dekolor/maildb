@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex justify-between">
             {{ __('Email Addresses') }}
-            <x-primary-button>Add manually</x-primary-button>
+            <a href="{{ route('address.add') }}"><x-primary-button>Add manually</x-primary-button></a>
         </h2>
     </x-slot>
 

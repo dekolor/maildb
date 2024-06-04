@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name("dashboard");
 
     Route::get('/addresses', [\App\Http\Controllers\EmailAddressController::class, 'list'])->name("address.list");
+    Route::get('/addresses/add', [\App\Http\Controllers\EmailAddressController::class, 'add'])->name("address.add");
 });
 
 Route::middleware('auth')->group(function () {
