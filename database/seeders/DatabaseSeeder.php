@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\EmailAddress;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,5 +23,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         EmailAddress::factory(20)->create();
+
+        Category::factory()->create([
+            'name' => 'None'
+        ]);
+
+        Category::factory()->create([
+            'name' => 'Guest'
+        ]);
+
+        Category::factory()->create([
+            'name' => 'User'
+        ]);
+
+        Category::factory()->create([
+            'name' => 'Subscriber'
+        ]);
+
+        Category::factory()->create([
+            'name' => 'Company'
+        ]);
     }
 }

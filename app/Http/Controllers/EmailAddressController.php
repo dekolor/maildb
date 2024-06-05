@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\EmailAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +17,16 @@ class EmailAddressController extends Controller
     }
 
     public function add() {
-      return view('address.add');
+      return view('address.add', [
+          'categoryList' => Category::all()
+      ]);
     }
 
     public function store(Request $request) {
 
         $validated = $request->validate([
             'email' => 'required|email:rfc,dns',
-            'category' => 'required',
+            'category' => 'required|exists:categories,name',
             'remember' => 'required'
         ]);
 
