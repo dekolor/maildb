@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailAddressController;
+use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectSettingsController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +23,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/addresses/add', [EmailAddressController::class, 'store'])->name("address.store");
 
     Route::get('/categories', [CategoryController::class, 'list'])->name("category.list");
+    Route::get('/categories/add', [CategoryController::class, 'add'])->name("category.add");
+    Route::post('/categories/add', [CategoryController::class, 'store'])->name("category.store");
+
+    Route::get('/campaigns', [CampaignController::class, 'list'])->name("campaign.list");
+    Route::get('/campaigns/add', [CampaignController::class, 'add'])->name("campaign.add");
+    Route::post('/campaigns/add', [CampaignController::class, 'store'])->name("campaign.store");
+    Route::get('/campaigns/send/{campaign}', [CampaignController::class, 'send'])->name("campaign.send");
+
+    Route::get('/onboarding', [OnboardingController::class, 'settings'])->name("onboarding");
+    Route::get('/projectsettings', [ProjectSettingsController::class, 'settings'])->name("projectsettings");
+    Route::get('/reports', [ReportsController::class, 'list'])->name("reports.list");
 });
 
 Route::middleware('auth')->group(function () {

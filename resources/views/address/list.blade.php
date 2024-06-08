@@ -127,7 +127,7 @@
                                     <tr class="border-b dark:border-gray-700">
                                         <td class="px-4 py-3">{{ $address->address }}</td>
                                         <td class="px-4 py-3"><span
-                                                class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ ucFirst($address->category) }}</span>
+                                                class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ ucFirst($address->category->name) }}</span>
                                         </td>
                                         <td class="px-4 py-3">{{ $address->created_at }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end">

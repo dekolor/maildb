@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\EmailAddress>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Campaign>
  */
-class EmailAddressFactory extends Factory
+class CampaignFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class EmailAddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'address' => fake()->email(),
-            'category_id' => '1',
-            'owner' => '1'
+            //
         ];
     }
 }

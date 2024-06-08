@@ -13,4 +13,21 @@ class CategoryController extends Controller
             'categoryList' => Category::paginate(10)
         ]);
     }
+
+    public function add() {
+        return view('category.add');
+    }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $category = new Category();
+        $category->name = $validated['name'];
+
+        $category->save();
+
+        return redirect(route('category.list'));
+    }
 }

@@ -26,13 +26,13 @@ class EmailAddressController extends Controller
 
         $validated = $request->validate([
             'email' => 'required|email:rfc,dns',
-            'category' => 'required|exists:categories,name',
+            'category' => 'required|exists:categories,id',
             'remember' => 'required'
         ]);
 
         $emailAddress = new EmailAddress();
         $emailAddress->address = $validated['email'];
-        $emailAddress->category = $validated['category'];
+        $emailAddress->category_id = $validated['category'];
         $emailAddress->owner = Auth::id();
 
         $emailAddress->save();

@@ -18,16 +18,16 @@
                     <x-nav-link :href="route('address.list')" :active="request()->routeIs('address.list')">
                         {{ __('Email Addresses') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Campaigns') }}
+                    <x-nav-link :href="route('campaign.list')" :active="request()->routeIs('campaign.list')">
+                        {{ __('Newsletters') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Onboarding') }}
+                    <x-nav-link :href="route('onboarding')" :active="request()->routeIs('onboarding')">
+                        {{ __('Subscribe page') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('projectsettings')" :active="request()->routeIs('projectsettings')">
                         {{ __('Project Settings') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('reports.list')" :active="request()->routeIs('reports.list')">
                         {{ __('Reports') }}
                     </x-nav-link>
                 </div>
