@@ -39,4 +39,30 @@ class EmailAddressController extends Controller
 
         return redirect(route('address.list'));
     }
+
+    public function patch(Request $request, EmailAddress $address) {
+        $validated = $request->validate([
+            'category' => 'required|exists:categories,id'
+        ]);
+
+        $emailAddress = EmailAddress::find($address->id);
+
+        $emailAddress->category_id = $validated['category'];
+        $emailAddress->save();
+
+        return redirect(route('address.list'))->with('status', 'Category for email address ' . $address->address . ' was changed to  ' . Category::find($validated['category'])->name . '!');
+    }
+
+    public function update(EmailAddress $address) {
+        return view('address.update', [
+            'address' => $address,
+            'categoryList' => Category::all()
+        ]);
+    }
+
+    public function destroy(EmailAddress $address) {
+        (new EmailAddress())->find($address->id)->delete();
+
+        return redirect(route('address.list'))->with('status', 'Email address ' . $address->address . ' deleted!');
+    }
 }

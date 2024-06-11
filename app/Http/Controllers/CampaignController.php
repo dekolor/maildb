@@ -50,4 +50,10 @@ class CampaignController extends Controller
 
         return redirect(route('campaign.list'))->with('status', 'Newsletter sent!');
     }
+
+    public function destroy(Campaign $campaign) {
+        (new Campaign())->find($campaign->id)->delete();
+
+        return redirect(route('campaign.list'))->with('status', 'Newsletter ' . $campaign->name . ' deleted!');
+    }
 }

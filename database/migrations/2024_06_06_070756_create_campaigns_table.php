@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('owner');
-            $table->string('content');
+            $table->longText('content');
             $table->string('category_id');
             $table->timestamps();
         });
