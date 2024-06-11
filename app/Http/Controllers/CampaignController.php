@@ -26,11 +26,13 @@ class CampaignController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'name' => 'required',
+            'content' => 'required',
             'category' => 'required|exists:categories,id'
         ]);
 
         $campaign = new Campaign();
         $campaign->name = $validated['name'];
+        $campaign->content = $validated['content'];
         $campaign->category_id = $validated['category'];
         $campaign->owner = Auth::id();
 
@@ -40,13 +42,12 @@ class CampaignController extends Controller
     }
 
     public function send(Campaign $campaign) {
-//        dd($campaign->category->addresses);
         $addresses = $campaign->category->addresses;
 
         foreach($addresses as $address) {
-            Mail::to($address->address)->send(new \App\Mail\Campaign());
+            Mail::to($address->address)->queue(new \App\Mail\Campaign($campaign->content, $campaign->name));
         }
 
-        return 'mails sent';
+        return redirect(route('campaign.list'))->with('status', 'Newsletter sent!');
     }
 }

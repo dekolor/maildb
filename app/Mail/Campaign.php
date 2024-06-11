@@ -14,12 +14,17 @@ class Campaign extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private String $content;
+
+    private String $name;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(String $content, String $name)
     {
-        //
+        $this->content = $content;
+        $this->name = $name;
     }
 
     /**
@@ -29,7 +34,7 @@ class Campaign extends Mailable
     {
         return new Envelope(
             from: new Address('noreply@dekolor.ro', 'MailDB'),
-            subject: 'Campaign',
+            subject: $this->name,
         );
     }
 
@@ -40,6 +45,9 @@ class Campaign extends Mailable
     {
         return new Content(
             view: 'mail.default',
+            with: [
+                'content' => $this->content
+            ]
         );
     }
 

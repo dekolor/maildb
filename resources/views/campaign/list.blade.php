@@ -14,6 +14,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @if(session('status'))
+                        <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                            <span class="font-medium">{{ session('status') }}</span>
+                        </div>
+                    @endif
                     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
                         <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                             <div class="w-full md:w-1/2">

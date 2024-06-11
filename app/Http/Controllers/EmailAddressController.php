@@ -12,7 +12,7 @@ class EmailAddressController extends Controller
     //
     public function list() {
         return view('address.list', [
-            'addressList' => EmailAddress::paginate(10)
+            'addressList' => EmailAddress::orderBy('id', 'desc')->paginate(10)
         ]);
     }
 
