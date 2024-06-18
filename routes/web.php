@@ -7,6 +7,7 @@ use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectSettingsController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,6 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/onboarding', [OnboardingController::class, 'settings'])->name("onboarding");
     Route::get('/projectsettings', [ProjectSettingsController::class, 'settings'])->name("projectsettings");
     Route::get('/reports', [ReportsController::class, 'list'])->name("reports.list");
+
+    Route::get('/newsletter/subscribe', [SubscribeController::class, 'subscribe'])->name("subscribe");
 });
 
 Route::middleware('auth')->group(function () {
