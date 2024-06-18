@@ -4,6 +4,9 @@
             {{ __('Newsletters') }}
             <div>
                 <a href="{{ route('campaign.add') }}">
+                    <x-primary-button>Email Templates</x-primary-button>
+                </a>
+                <a href="{{ route('campaign.add') }}">
                     <x-primary-button>Add newsletter</x-primary-button>
                 </a>
             </div>

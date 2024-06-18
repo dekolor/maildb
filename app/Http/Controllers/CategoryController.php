@@ -21,10 +21,12 @@ class CategoryController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'name' => 'required',
+            'color' => 'required|hex_color'
         ]);
 
         $category = new Category();
         $category->name = $validated['name'];
+        $category->color = $validated['color'];
 
         $category->save();
 

@@ -124,6 +124,7 @@
                                     <th scope="col" class="px-4 py-3">Email Address</th>
                                     <th scope="col" class="px-4 py-3">Category</th>
                                     <th scope="col" class="px-4 py-3">Added</th>
+                                    <th scope="col" class="px-4 py-3">Updated</th>
                                     <th scope="col" class="px-4 py-3">
                                         <span class="sr-only">Actions</span>
                                     </th>
@@ -134,9 +135,10 @@
                                     <tr class="border-b dark:border-gray-700">
                                         <td class="px-4 py-3">{{ $address->address }}</td>
                                         <td class="px-4 py-3"><span
-                                                class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ ucFirst($address->category->name) }}</span>
+                                                class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300" style="background-color:{{$address->category->color}};color:{{\InvertColor\Color::fromHex($address->category->color)->invert(true)}}">{{ ucFirst($address->category->name) }}</span>
                                         </td>
                                         <td class="px-4 py-3">{{ $address->created_at }}</td>
+                                        <td class="px-4 py-3">{{ $address->updated_at }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end">
                                             <button id="dropdown-{{ $address->id }}-button" data-dropdown-toggle="dropdown-{{ $address->id }}"
                                                     class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
