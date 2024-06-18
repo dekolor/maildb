@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\EmailAddress;
+use App\Models\Project;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\ProjectFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -43,5 +45,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->create([
             'name' => 'Company'
         ]);
+
+        Project::factory()->create();
     }
 }

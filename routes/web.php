@@ -38,9 +38,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/onboarding', [OnboardingController::class, 'settings'])->name("onboarding");
     Route::get('/projectsettings', [ProjectSettingsController::class, 'settings'])->name("projectsettings");
+    Route::post('/projectsettings', [ProjectSettingsController::class, 'update'])->name("projectsettings.update");
     Route::get('/reports', [ReportsController::class, 'list'])->name("reports.list");
 
-    Route::get('/newsletter/subscribe', [SubscribeController::class, 'subscribe'])->name("subscribe");
+    Route::get('/newsletter/subscribe/{id}', [SubscribeController::class, 'subscribe'])->name("subscribe");
+    Route::post('/newsletter/subscribe/{id}', [SubscribeController::class, 'submit'])->name("subscribe.submit");
 });
 
 Route::middleware('auth')->group(function () {
