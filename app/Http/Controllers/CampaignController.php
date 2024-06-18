@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\Category;
+use App\Models\SentCampaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -47,6 +48,14 @@ class CampaignController extends Controller
         foreach($addresses as $address) {
             Mail::to($address->address)->queue(new \App\Mail\Campaign($campaign->content, $campaign->name));
         }
+
+        $sentCampaign = new SentCampaign();
+
+        $sentCampaign->campaign_id = $campaign->id;
+        $sentCampaign->category_id = $campaign->category_id;
+        $sentCampaign->owner = $campaign->owner;
+
+        $sentCampaign->save();
 
         return redirect(route('campaign.list'))->with('status', 'Newsletter sent!');
     }

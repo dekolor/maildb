@@ -36,6 +36,7 @@
                                     <th scope="col" class="px-4 py-3">Name</th>
                                     <th scope="col" class="px-4 py-3">Destination</th>
                                     <th scope="col" class="px-4 py-3">Added</th>
+                                    <th scope="col" class="px-4 py-3">Last sent</th>
                                     <th scope="col" class="px-4 py-3">
                                         <span class="sr-only">Actions</span>
                                     </th>
@@ -49,6 +50,7 @@
                                                 class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ ucFirst($campaign->category->name) }}</span>
                                         </td>
                                         <td class="px-4 py-3">{{ $campaign->created_at }}</td>
+                                        <td class="px-4 py-3">{{ $campaign->sentCampaigns[count($campaign->sentCampaigns) - 1]->created_at }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end">
                                             <button id="dropdown-{{ $campaign->id }}-button"
                                                     data-dropdown-toggle="dropdown-{{ $campaign->id }}"
