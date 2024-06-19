@@ -20,4 +20,9 @@ RUN mkdir -p /home/$user/.composer && \
 
 WORKDIR /var/www
 
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
+RUN install-php-extensions xdebug pcov
+
+COPY ./docker-compose/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
+
 USER $user

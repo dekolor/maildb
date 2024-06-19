@@ -39,7 +39,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/onboarding', [OnboardingController::class, 'settings'])->name("onboarding");
     Route::get('/projectsettings', [ProjectSettingsController::class, 'settings'])->name("projectsettings");
     Route::post('/projectsettings', [ProjectSettingsController::class, 'update'])->name("projectsettings.update");
+
     Route::get('/reports', [ReportsController::class, 'list'])->name("reports.list");
+    Route::get('/reports/sentcampaigns', [ReportsController::class, 'sentCampaigns'])->name("reports.sentcampaigns");
+    Route::get('/reports/campaigns', [ReportsController::class, 'campaigns'])->name("reports.campaigns");
+    Route::get('/reports/emailaddresses', [ReportsController::class, 'emailAddresses'])->name("reports.emailaddresses");
 
     Route::get('/newsletter/subscribe/{id}', [SubscribeController::class, 'subscribe'])->name("subscribe");
     Route::post('/newsletter/subscribe/{id}', [SubscribeController::class, 'submit'])->name("subscribe.submit");
